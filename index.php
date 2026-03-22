@@ -9,6 +9,11 @@
         }
         if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] === true) {
             // 既然已经登录了，直接去后台，别在这儿磨蹭
+            // 管理员单独指定
+            if ($_SESSION['role'] == 'admin') {
+                header("Location: /admin/admin_server.php");
+                exit();
+            }
             header("Location: dashboard.php");
             exit();
         }
@@ -84,6 +89,5 @@
             </p>
         </div>
     </div>
-
 </body>
 </html>

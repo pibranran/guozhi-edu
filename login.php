@@ -53,7 +53,7 @@ if ($row = $result->fetch_assoc()) {
         $update->execute();
 
         if($role === 'admin') {
-            header("Location: /admin/admin_students.php");
+            header("Location: /admin/admin_server.php");
             exit();
         }
 

@@ -1,0 +1,18 @@
+<?php
+// JuicyEdu - 数据库配置模板
+// 使用方法：将此文件重命名为 config.php 并填入你的本地配置
+
+    // 全局导入PhpSpreadsheet 库
+    require_once 'vendor/autoload.php';
+
+    $host = '127.0.0.1';
+    $dbname = 'juicy_db';
+    $username = 'root';    // 默认用户名
+    $password = '';         // 密码自己填
+    $charset = 'utf8mb4';
+
+    try {
+        $pdo = new PDO("mysql:host=$host;dbname=$dbname;charset=$charset", $username, $password);
+    } catch (PDOException $e) {
+        die("数据库连接失败: " . $e->getMessage());
+}

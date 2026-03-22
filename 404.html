@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>果汁教务 - 迷失在静谧之中</title>
+    <style>
+        :root {
+            --bg-color: #0d0d0d;
+            --accent-color: #c5a47e; /* 哑金 */
+            --text-color: #ffffff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-family: "Optima", "Didot", "Playfair Display", serif;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        .container {
+            text-align: center;
+            position: relative;
+        }
+
+        /* 核心 404 数字：大字、镂空、微妙呼吸感 */
+        h1 {
+            font-size: 15vw;
+            font-weight: 100;
+            letter-spacing: 2rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(to bottom, #fff 30%, var(--accent-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            opacity: 0.8;
+            animation: breathe 4s ease-in-out infinite;
+        }
+
+        /* 装饰横线：从中心向两边生长 */
+        .line {
+            width: 0;
+            height: 1px;
+            background: var(--accent-color);
+            margin: 2rem auto;
+            animation: grow 1.5s cubic-bezier(0.7, 0, 0.3, 1) forwards;
+            animation-delay: 0.5s;
+        }
+
+        p {
+            font-size: 0.9rem;
+            letter-spacing: 0.5rem;
+            text-transform: uppercase;
+            color: #666;
+            margin-bottom: 3rem;
+        }
+
+        /* 按钮：极其克制的交互 */
+        .back-btn {
+            text-decoration: none;
+            color: var(--accent-color);
+            font-size: 0.8rem;
+            border: 1px solid #333;
+            padding: 1rem 2.5rem;
+            transition: all 0.4s ease;
+            letter-spacing: 0.2rem;
+        }
+
+        .back-btn:hover {
+            border-color: var(--accent-color);
+            background: var(--accent-color);
+            color: #000;
+            box-shadow: 0 0 20px rgba(197, 164, 126, 0.3);
+        }
+
+        /* 动画定义 */
+        @keyframes breathe {
+            0%, 100% { opacity: 0.6; transform: scale(1); }
+            50% { opacity: 0.9; transform: scale(1.02); }
+        }
+
+        @keyframes grow {
+            to { width: 300px; }
+        }
+
+        /* 响应式微调 */
+        @media (max-width: 768px) {
+            h1 { font-size: 25vw; letter-spacing: 1rem; }
+            @keyframes grow { to { width: 150px; } }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>404</h1>
+        <div class="line"></div>
+        <p>THE ART OF BEING LOST</p>
+        <a href="/" class="back-btn">回到原点</a>
+    </div>
+
+</body>
+</html>

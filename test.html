@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>test</title>
+</head>
+<body>
+    <div class="p-8">
+    <div class="flex justify-between items-end mb-8">
+        <div>
+            <h2 class="text-2xl font-black text-slate-800">学籍库 / <span class="text-slate-400 font-light text-lg">Registry</span></h2>
+            <p class="text-xs text-slate-400 mt-1 uppercase tracking-tighter">当前数据库共计: 1,240 名学生</p>
+        </div>
+        <div class="flex gap-3">
+            <button class="bg-slate-100 text-slate-600 px-4 py-2 rounded-xl text-sm font-bold hover:bg-slate-200 transition">导出报表</button>
+            <button class="bg-indigo-600 text-white px-6 py-2 rounded-xl text-sm font-bold shadow-lg shadow-indigo-200 hover:bg-indigo-700 transition">+ 新增学生</button>
+        </div>
+    </div>
+
+    <div class="bg-white rounded-[2rem] shadow-xl shadow-slate-200/50 border border-slate-100 overflow-hidden">
+        <div class="overflow-x-auto">
+            <table class="w-full text-left border-collapse">
+                <thead class="bg-slate-50/50">
+                    <tr>
+                        <th class="px-8 py-5 text-[10px] font-black text-slate-400 uppercase tracking-widest">唯一标识 (UID)</th>
+                        <th class="px-8 py-5 text-[10px] font-black text-slate-400 uppercase tracking-widest">全名</th>
+                        <th class="px-8 py-5 text-[10px] font-black text-slate-400 uppercase tracking-widest">班级架构</th>
+                        <th class="px-8 py-5 text-[10px] font-black text-slate-400 uppercase tracking-widest">状态</th>
+                        <th class="px-8 py-5 text-[10px] font-black text-slate-400 uppercase tracking-widest text-right">管理</th>
+                    </tr>
+                </thead>
+                <tbody class="divide-y divide-slate-50">
+                    <tr class="group hover:bg-indigo-50/30 transition-colors">
+                        <td class="px-8 py-5 font-mono text-sm font-bold text-indigo-600 italic">#2026_09012</td>
+                        <td class="px-8 py-5 text-sm font-semibold text-slate-700">陈知行</td>
+                        <td class="px-8 py-5">
+                            <span class="text-xs bg-slate-100 text-slate-600 px-2 py-1 rounded-md">高二</span>
+                            <span class="text-xs bg-slate-100 text-slate-600 px-2 py-1 rounded-md">理科实验班</span>
+                        </td>
+                        <td class="px-8 py-5">
+                            <div class="flex items-center gap-2">
+                                <span class="w-2 h-2 bg-emerald-500 rounded-full animate-pulse"></span>
+                                <span class="text-xs font-bold text-emerald-600">在籍</span>
+                            </div>
+                        </td>
+                        <td class="px-8 py-5 text-right">
+                            <button class="p-2 hover:bg-white rounded-lg transition-all opacity-0 group-hover:opacity-100">
+                                <svg class="w-4 h-4 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"></path></svg>
+                            </button>
+                        </td>
+                    </tr>
+                    </tbody>
+            </table>
+        </div>
+    </div>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,218 @@
+body {
+    /* 渐变背景：从深蓝黑到石板灰 */
+    background: radial-gradient(circle at top right, #1e293b, #0f172a);
+    font-family: 'Inter', -apple-system, sans-serif;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    margin: 0;
+}
+
+.container {
+    width: 100%;
+    max-width: 420px;
+    margin: 0 auto;
+}
+
+.header-section {
+    text-align: center;
+    margin-bottom: 2.5rem;
+}
+
+.logo-text {
+    font-size: 1.875rem;
+    font-weight: bold;
+    letter-spacing: 0.2em;
+    color: white;
+    line-height: 1.5;
+}
+
+.logo-highlight {
+    color: #f59e0b;
+}
+
+.system-version {
+    color: #64748b;
+    font-size: 0.75rem;
+    margin-top: 0.5rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+}
+
+.login-card {
+    background: rgba(30, 41, 59, 0.7);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 1.5rem;
+    padding: 2.5rem;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+    width: 100%;
+    max-width: 420px;
+    margin: 0 auto;
+}
+
+.login-title {
+    font-size: 1.25rem;
+    font-weight: 500;
+    color: white;
+    margin-bottom: 2rem;
+}
+
+.login-subtitle {
+    color: #94a3b8;
+    font-size: 0.875rem;
+}
+
+.role-selector {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.25rem;
+    background-color: rgba(15, 23, 42, 0.5);
+    border-radius: 0.75rem;
+    margin-bottom: 1.5rem;
+    width: 100%;
+}
+
+.role-option {
+    flex: 1;
+    cursor: pointer;
+}
+
+.role-input {
+    display: none;
+}
+
+.role-label {
+    text-align: center;
+    padding: 0.5rem;
+    font-size: 0.75rem;
+    font-weight: bold;
+    color: #64748b;
+    cursor: pointer;
+    border-radius: 0.5rem;
+    transition: all 0.3s ease;
+}
+
+.role-input:checked + .role-label {
+    background-color: rgba(245, 158, 11, 0.1);
+    color: #f59e0b;
+}
+
+.input-group {
+    position: relative;
+    margin-bottom: 1.5rem;
+    width: 100%;
+}
+
+.input-label {
+    font-size: 0.625rem;
+    color: #64748b;
+    font-weight: bold;
+    position: absolute;
+    left: 1rem;
+    top: -0.5rem;
+    background-color: #1e293b;
+    padding: 0 0.25rem;
+    text-transform: uppercase;
+    z-index: 1;
+}
+
+.input-field {
+    width: 100%;
+    background-color: transparent;
+    border: 1px solid #334155;
+    color: white;
+    padding: 1rem;
+    border-radius: 0.75rem;
+    font-family: monospace;
+    transition: all 0.3s ease;
+    box-sizing: border-box;
+}
+
+.input-field:focus {
+    outline: none;
+    border-color: rgba(245, 158, 11, 0.5);
+    box-shadow: 0 0 0 4px rgba(245, 158, 11, 0.2);
+}
+
+.login-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 0.75rem;
+    color: #64748b;
+    margin-bottom: 1.5rem;
+    width: 100%;
+}
+
+.forgot-password-btn {
+    background: none;
+    border: none;
+    color: #64748b;
+    font-size: 0.75rem;
+    cursor: pointer;
+    text-decoration: underline;
+    padding: 0;
+}
+
+.forgot-password-btn:hover {
+    color: #f59e0b;
+}
+
+.login-btn {
+    width: 100%;
+    background-color: #f59e0b;
+    color: #1e293b;
+    font-weight: bold;
+    padding: 1rem;
+    border: none;
+    border-radius: 0.75rem;
+    box-shadow: 0 4px 20px rgba(245, 158, 11, 0.2);
+    transition: all 0.3s ease;
+    box-sizing: border-box;
+}
+
+.login-btn:hover {
+    background-color: #fbbf24;
+}
+
+.login-btn:active {
+    transform: scale(0.98);
+}
+
+.footer-section {
+    margin-top: 2rem;
+    text-align: center;
+    width: 100%;
+}
+
+.footer-text {
+    font-size: 0.625rem;
+    color: #475569;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+}
+
+.designer-link {
+    color: #22d3ee;
+}
+
+/* 隐藏输入框自带的样式 */
+input:focus { 
+    outline: none; 
+}
+
+/* 响应式设计 */
+@media (max-width: 480px) {
+    .container {
+        max-width: 95%;
+        padding: 0 0.5rem;
+    }
+    
+    .login-card {
+        padding: 2rem;
+        max-width: 95%;
+    }
+}

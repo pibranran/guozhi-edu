@@ -10,7 +10,7 @@ require_once __DIR__ . '/../config.php';
 // 判断会话是否合法
 if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'admin') {
     // 未授权，可重定向到登录页或显示 403
-    header('Location: /index.php');
+    header('Location: /../index.php');
     die('无权访问该页面');
     exit();
 }
@@ -337,6 +337,7 @@ function getColorClass($percent) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
     <title>服务器监控仪表盘 | 后台概览</title>
+    <link rel="icon" type="image/png" href="/../jiaowu.png">
     <!-- TailwindCSS CDN -->
     <script src="https://cdn.tailwindcss.com/3.4.17"></script>
     <!-- Font Awesome 6 -->

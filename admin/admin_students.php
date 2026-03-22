@@ -3,7 +3,7 @@ require_once __DIR__ . "/../config.php";
 
 // 1. 权限与身份获取
 if (!isset($_SESSION['logged_in']) || $_SESSION['role'] !== 'admin') {
-    header("Location: index.php");
+    header("Location: /../index.php");
     exit();
 }
 $role = $_SESSION['role'] ?? 'admin';
@@ -128,6 +128,7 @@ $baseUrl = 'admin_students.php?' . ($queryString ? $queryString . '&' : '');
     <meta charset="UTF-8">
     <script src="https://cdn.tailwindcss.com"></script>
     <title>学生管理 - EDU.AMS</title>
+    <link rel="icon" type="image/png" href="/../jiaowu.png">
 </head>
 <body class="flex h-screen bg-slate-50 overflow-hidden">
     <?php include __DIR__ . "/../sidebar.php";; ?>

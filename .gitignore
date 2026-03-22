@@ -4,3 +4,9 @@ Untitled2.html
 get_hash.php
 login (2).html
 dashboard_1.php
+/vendor/
+.env
+.DS_Store
+Thumbs.db
+/.vscode/
+/.idea/

@@ -97,7 +97,7 @@ $sql = "SELECT t.uuid, t.name, t.LastLoginTime,
                GROUP_CONCAT(DISTINCT co.course_name SEPARATOR '、') as taught_courses
         FROM teachers t
         LEFT JOIN schedule s ON t.uuid = s.teacher_uuid
-        LEFT JOIN courses co ON s.course_id = co.course_id
+        LEFT JOIN courses co ON s.course_id = co.id
         $whereClause 
         GROUP BY t.uuid
         ORDER BY t.uuid DESC 

@@ -34,6 +34,31 @@
         }
         // afterUse()
     </script>
+
+    <!-- PWA 桌面应用 必出安装按钮 -->
+    <link rel="manifest" href="/manifest.json">
+    <meta name="theme-color" content="#1e293b">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link rel="icon" href="/jiaowu.png">
+
+    <script>
+    let deferredPrompt;
+    window.addEventListener('beforeinstallprompt', (e) => {
+        console.log("✅ 可以安装啦！");
+        deferredPrompt = e;
+        // 浏览器地址栏 右上角 自动出现安装图标
+    });
+    </script>
+
+    <!-- 注册ServiceWorker（关键！你之前缺这个！） -->
+    <script>
+    if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+            navigator.serviceWorker.register('/sw.js');
+        });
+    }
+    </script>
 </head>
 <body onload="afterUse()">
     <div class="container">

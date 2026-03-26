@@ -40,7 +40,7 @@ if ($action === 'add') {
     $insert->bind_param("ss", $course_code, $course_name);
 
     if ($insert->execute()) {
-        echo json_encode(["success" => true]);
+        echo json_encode(["success" => true, "course_id" => $insert->insert_id]); // 返回自增 ID
     } else {
         echo json_encode(["success" => false, "message" => "添加失败：" . $conn->error]);
     }
@@ -51,7 +51,7 @@ if ($action === 'add') {
 // 修改课程
 // ------------------------------
 if ($action === 'update') {
-    $id = intval($data['id']);
+    $id = intval($data['id']); // 强制转 int
     $course_code = trim($data['course_code']);
     $course_name = trim($data['course_name']);
 
@@ -62,7 +62,7 @@ if ($action === 'update') {
 
     // 检查重复（排除自己）
     $stmt = $conn->prepare("SELECT id FROM courses WHERE course_code = ? AND id != ?");
-    $stmt->bind_param("si", $course_code, $id);
+    $stmt->bind_param("si", $course_code, $id); // 第二个参数是 int
     $stmt->execute();
     $res = $stmt->get_result();
 
@@ -72,12 +72,12 @@ if ($action === 'update') {
     }
 
     $update = $conn->prepare("UPDATE courses SET course_code=?, course_name=? WHERE id=?");
-    $update->bind_param("ssi", $course_code, $course_name, $id);
+    $update->bind_param("ssi", $course_code, $course_name, $id); // 第三个参数是 int
 
     if ($update->execute()) {
         echo json_encode(["success" => true]);
     } else {
-        echo json_encode(["success" => false, "message" => "修改失败"]);
+        echo json_encode(["success" => false, "message" => "修改失败：" . $conn->error]);
     }
     exit;
 }
@@ -86,10 +86,20 @@ if ($action === 'update') {
 // 删除单个课程
 // ------------------------------
 if ($action === 'delete') {
-    $id = intval($data['id']);
+    $id = intval($data['id']); // 强制转 int
 
     if (!$id) {
         echo json_encode(["success" => false, "message" => "缺少课程ID"]);
+        exit;
+    }
+
+    // 先检查是否有关联的排课数据（防止外键约束报错）
+    $check_stmt = $conn->prepare("SELECT id FROM schedule WHERE course_id = ?");
+    $check_stmt->bind_param("i", $id);
+    $check_stmt->execute();
+    $check_res = $check_stmt->get_result();
+    if ($check_res->num_rows > 0) {
+        echo json_encode(["success" => false, "message" => "删除失败：该课程存在关联的排课数据"]);
         exit;
     }
 
@@ -99,7 +109,7 @@ if ($action === 'delete') {
     if ($del->execute()) {
         echo json_encode(["success" => true]);
     } else {
-        echo json_encode(["success" => false, "message" => "删除失败，可能存在关联数据"]);
+        echo json_encode(["success" => false, "message" => "删除失败：" . $conn->error]);
     }
     exit;
 }
@@ -114,14 +124,23 @@ if ($action === 'delete_batch') {
         exit;
     }
 
-    $ids = array_map('intval', $ids);
+    $ids = array_map('intval', $ids); // 全部转 int
     $in = implode(',', $ids);
+
+    // 检查关联数据
+    $check_stmt = $conn->prepare("SELECT id FROM schedule WHERE course_id IN ($in)");
+    $check_stmt->execute();
+    $check_res = $check_stmt->get_result();
+    if ($check_res->num_rows > 0) {
+        echo json_encode(["success" => false, "message" => "删除失败：部分课程存在关联的排课数据"]);
+        exit;
+    }
 
     $sql = "DELETE FROM courses WHERE id IN ($in)";
     if ($conn->query($sql)) {
         echo json_encode(["success" => true]);
     } else {
-        echo json_encode(["success" => false, "message" => "批量删除失败"]);
+        echo json_encode(["success" => false, "message" => "批量删除失败：" . $conn->error]);
     }
     exit;
 }
